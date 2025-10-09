@@ -18,23 +18,55 @@
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0,0,0,0.8);
     }
+    button {
+      position: absolute;
+      bottom: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <img id="mainImg" src="" alt="Zufallsbild">
+  <button onclick="showNextImage()">Nächstes Bild</button>
 
   <script>
-    // Array automatisch mit allen Bildern füllen
+    // 1. Bilder-Array erstellen
     const images = [];
     for (let i = 1; i <= 63; i++) {
-      // führende Nullen (01, 02, 03...)
       const num = i.toString().padStart(2, "0");
-      images.push(`Bild${num}.jpg`);  // ← das ist richtig mit Backticks
+      images.push(`Bild${num}.jpg`);
     }
 
-    // Zufälliges Bild auswählen
-    const idx = Math.floor(Math.random() * images.length);
-    document.getElementById("mainImg").src = images[idx];
+    // 2. Fisher-Yates Shuffle Funktion
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // 3. Gemischte Liste
+    let shuffledImages = shuffle([...images]);
+    let counter = 0;
+
+    // 4. Funktion: nächstes Bild anzeigen
+    function showNextImage() {
+      document.getElementById("mainImg").src = shuffledImages[counter];
+      counter++;
+      if (counter >= shuffledImages.length) {
+        // Wenn Ende erreicht, Liste neu mischen
+        shuffledImages = shuffle([...images]);
+        counter = 0;
+      }
+    }
+
+    // Erstes Bild anzeigen
+    showNextImage();
   </script>
 </body>
 </html>
