@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Mein Fotoalbum</title>
+  <title>Album</title>
   <style>
     body {
       display: flex;
@@ -29,7 +29,7 @@
     for (let i = 1; i <= 63; i++) {
       // führende Nullen (01, 02, 03...)
       const num = i.toString().padStart(2, "0");
-      images.push(`bild${num}.jpg`);  // ← das ist richtig mit Backticks
+      images.push(`Bild${num}.jpg`);  // ← das ist richtig mit Backticks
     }
 
     // Zufälliges Bild auswählen
