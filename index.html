@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Album</title>
+  <title>Mein Fotoalbum</title>
   <style>
     body {
       display: flex;
@@ -21,21 +21,20 @@
   </style>
 </head>
 <body>
-  <img id="randomImage" src="" alt="Zufallsbild">
+  <img id="mainImg" src="" alt="Zufallsbild">
 
   <script>
-    // Liste deiner Bilder
-    const bilder = [
-      "Bild1.jpg",
-      "Bild2.jpg",
-      "Bild3.jpg",
-      "Bild4.jpg"
-      // hier kannst du beliebig weitermachen
-    ];
+    // Array automatisch mit allen Bildern füllen
+    const images = [];
+    for (let i = 1; i <= 63; i++) {
+      // führende Nullen (01, 02, 03...)
+      const num = i.toString().padStart(2, "0");
+      images.push(`bild${num}.jpg`);  // ← das ist richtig mit Backticks
+    }
 
     // Zufälliges Bild auswählen
-    const zufall = Math.floor(Math.random() * bilder.length);
-    document.getElementById("randomImage").src = bilder[zufall];
+    const idx = Math.floor(Math.random() * images.length);
+    document.getElementById("mainImg").src = images[idx];
   </script>
 </body>
 </html>
