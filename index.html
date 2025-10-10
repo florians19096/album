@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zufallsbild Album</title>
+  <title>album</title>
   <style>
-    /* Optional: Bild zentrieren und responsive */
     body {
       display: flex;
       justify-content: center;
@@ -27,15 +26,13 @@
   <img id="randomImage" alt="Zufallsbild">
 
   <script>
-    // Array mit allen Raw-Links zu deinen Bildern
-    const bilder = [
-      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild1.jpg",
-      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild2.jpg",
-      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild3.jpg",
-      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild4.jpg",
-      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild5.jpg",
-      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild6.jpg"
-    ];
+    // Array mit 55 Raw-Links zu deinen Bildern
+    const bilder = [];
+    for (let i = 1; i <= 55; i++) {
+      // führende Null optional, falls deine Bilder z.B. bild01.jpg heißen
+      const zahl = i < 10 ? "0" + i : i;
+      bilder.push(`https://raw.githubusercontent.com/florians19096/album/main/bilder/bild${zahl}.jpg`);
+    }
 
     // Zufälliges Bild auswählen
     const img = document.getElementById("randomImage");
