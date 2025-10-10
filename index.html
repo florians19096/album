@@ -2,38 +2,44 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>album</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zufallsbild Album</title>
   <style>
+    /* Optional: Bild zentrieren und responsive */
     body {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
-      background: #111;
+      background: #f0f0f0;
     }
     img {
       max-width: 90%;
       max-height: 90%;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      object-fit: contain;
+      border: 2px solid #ccc;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <img id="mainImg" src="" alt="Zufallsbild">
+  <img id="randomImage" alt="Zufallsbild">
 
   <script>
-    // Array mit Pfad zum "Bilder"-Ordner
-    const images = [];
-    for (let i = 1; i <= 55; i++) {
-      const num = i.toString().padStart(2, "0");
-      images.push(`bilder/bild${num}.jpg`);
-    }
+    // Array mit allen Raw-Links zu deinen Bildern
+    const bilder = [
+      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild1.jpg",
+      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild2.jpg",
+      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild3.jpg",
+      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild4.jpg",
+      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild5.jpg",
+      "https://raw.githubusercontent.com/florians19096/album/main/bilder/bild6.jpg"
+    ];
 
-    // Zufälliges Bild wählen
-    const idx = Math.floor(Math.random() * images.length);
-    document.getElementById("mainImg").src = images[idx];
+    // Zufälliges Bild auswählen
+    const img = document.getElementById("randomImage");
+    img.src = bilder[Math.floor(Math.random() * bilder.length)];
   </script>
 </body>
 </html>
