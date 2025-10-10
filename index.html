@@ -26,17 +26,22 @@
   <img id="randomImage" alt="Zufallsbild">
 
   <script>
-    // Array mit 55 Raw-Links zu deinen Bildern
-    const bilder = [];
-    for (let i = 1; i <= 55; i++) {
-      // führende Null optional, falls deine Bilder z.B. bild01.jpg heißen
-      const zahl = i < 10 ? "0" + i : i;
-      bilder.push(`https://raw.githubusercontent.com/florians19096/album/main/bilder/bild${zahl}.jpg`);
+    // Basis-Link zu deinem GitHub-Raw-Ordner
+    const basisLink = "https://raw.githubusercontent.com/florians19096/album/main/bilder/";
+
+    // Hier die Anzahl der Bilder ändern
+    let anzahl = 55; // z.B. 55 Bilder
+
+    // Array mit allen Bildnamen automatisch erstellen (bild1.jpg bis bild55.jpg)
+    const bildNamen = [];
+    for (let i = 1; i <= anzahl; i++) {
+      bildNamen.push(`bild${i}.jpg`);
     }
 
     // Zufälliges Bild auswählen
     const img = document.getElementById("randomImage");
-    img.src = bilder[Math.floor(Math.random() * bilder.length)];
+    const zufall = bildNamen[Math.floor(Math.random() * bildNamen.length)];
+    img.src = basisLink + zufall;
   </script>
 </body>
 </html>
